@@ -1,0 +1,103 @@
+<section id="about" class="about-section py-5 position-relative">
+  <div class="container py-lg-4">
+    <!-- Section Header -->
+    <div class="text-center mb-5">
+      <div class="section-badge">
+        <i class="bi bi-person-badge"></i>
+        <span>About Me</span>
+      </div>
+      <h2 class="section-title">
+        Bridging Logic with <span class="gradient-text">Visual Artistry</span>
+      </h2>
+      <p class="section-subtitle">
+        A look into who I am, how I build resilient software, and the principles driving my work.
+      </p>
+    </div>
+
+    <!-- Main Bio & Stats Row -->
+    <div class="row gy-4 align-items-stretch">
+      <!-- Biography Panel -->
+      <div class="col-lg-7">
+        <div class="glass-panel p-4 p-md-5 h-100 bio-card d-flex flex-column justify-content-between">
+          <div>
+            <div class="d-flex align-items-center gap-3 mb-4">
+              <div class="bio-avatar-chip">
+                <i class="bi bi-terminal-fill text-cyan"></i>
+              </div>
+              <div>
+                <h3 class="h4 mb-0 text-white fw-bold">Engineering Philosophy</h3>
+                <span class="philosophy-sub">Systems that scale, interfaces that inspire</span>
+              </div>
+            </div>
+
+            <div class="bio-text">
+              <p class="lead-text mb-3">
+                {{ profile.bioP1 }}
+              </p>
+              <p class="bio-para mb-3">
+                {{ profile.bioP2 }}
+              </p>
+              <p class="bio-para mb-4">
+                {{ profile.bioP3 }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Highlight Pillars -->
+          <div class="row g-3 pt-3 border-top border-secondary border-opacity-25">
+            @for (item of strengths; track item.title) {
+              <div class="col-md-4">
+                <div class="strength-card">
+                  <i class="bi {{ item.icon }} strength-icon"></i>
+                  <h4 class="strength-title">{{ item.title }}</h4>
+                  <p class="strength-desc mb-0">{{ item.desc }}</p>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats & Highlights Column -->
+      <div class="col-lg-5">
+        <div class="d-flex flex-column gap-4 h-100">
+          <!-- Stats Grid -->
+          <div class="row g-3">
+            @for (stat of stats; track stat.label) {
+              <div class="col-6">
+                <div class="glass-panel p-3 p-md-4 stat-box text-center h-100">
+                  <div class="stat-icon-wrapper mb-2" [style.color]="stat.color">
+                    <i class="bi {{ stat.icon }}"></i>
+                  </div>
+                  <div class="stat-number" [style.color]="stat.color">{{ stat.value }}</div>
+                  <div class="stat-label">{{ stat.label }}</div>
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- Quick Fact Card -->
+          <div class="glass-panel p-4 quick-fact-card flex-grow-1 d-flex flex-column justify-content-center">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="fact-icon">
+                <i class="bi bi-geo-alt-fill text-danger"></i>
+              </div>
+              <div>
+                <div class="text-white fw-bold">Work Availability</div>
+                <div class="location-value small">{{ profile.location }}</div>
+              </div>
+            </div>
+            <p class="small fact-desc mb-3">
+              Ready to collaborate with high-performing engineering teams, whether for modernizing microservices or building responsive single-page applications.
+            </p>
+            <div>
+              <a href="#contact" class="btn btn-sm btn-vibrant-outline w-100">
+                <i class="bi bi-calendar-check me-2"></i> Schedule a Discussion
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

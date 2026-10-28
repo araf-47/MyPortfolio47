@@ -1,0 +1,160 @@
+<section id="contact" class="contact-section py-5 position-relative">
+  <div class="container py-lg-4">
+    <!-- Header -->
+    <div class="text-center mb-5">
+      <div class="section-badge">
+        <i class="bi bi-chat-heart-fill"></i>
+        <span>Get in Touch</span>
+      </div>
+      <h2 class="section-title">
+        Let's Build Something <span class="gradient-text">Extraordinary</span>
+      </h2>
+      <p class="section-subtitle">
+        Have an exciting project, open role, or architecture to brainstorm? Send a message and let's connect.
+      </p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <!-- Contact Info & Socials Column -->
+      <div class="col-lg-5">
+        <div class="glass-panel p-4 p-md-5 h-100 d-flex flex-column justify-content-between contact-info-card">
+          <div>
+            <h3 class="h4 text-white fw-bold mb-3">Direct Channels</h3>
+            <p class="text-muted mb-4">
+              I am always keen to discuss modern full-stack development, Java/Spring distributed services, and responsive Angular interfaces.
+            </p>
+
+            <!-- Social Links List -->
+            <div class="social-list d-flex flex-column gap-3 mb-4">
+              @for (item of socialLinks; track item.platform) {
+                <a
+                  [href]="item.url"
+                  target="_blank"
+                  rel="noopener"
+                  class="social-item p-3 d-flex align-items-center gap-3 text-decoration-none"
+                >
+                  <div class="social-icon-box">
+                    <i class="bi {{ item.icon }}"></i>
+                  </div>
+                  <div>
+                    <div class="social-title">{{ item.platform }}</div>
+                    <div class="social-sub">{{ item.label }}</div>
+                  </div>
+                  <i class="bi bi-arrow-right ms-auto social-arrow"></i>
+                </a>
+              }
+            </div>
+          </div>
+
+          <!-- Availability Tag -->
+          <div class="availability-pill p-3 rounded-3 d-flex align-items-center gap-3">
+            <div class="avail-dot"></div>
+            <div class="small">
+              <span class="text-white fw-bold d-block">Response Time:</span>
+              <span class="text-muted">Typically responds within 24 hours</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Static Contact Form Column -->
+      <div class="col-lg-7">
+        <div class="glass-panel p-4 p-md-5 h-100 form-card position-relative">
+          @if (isSubmitted) {
+            <div class="success-feedback text-center py-5">
+              <div class="success-icon mb-4">
+                <i class="bi bi-check2-circle"></i>
+              </div>
+              <h3 class="h4 text-white fw-bold mb-2">Message Sent Successfully!</h3>
+              <p class="text-muted mb-4">
+                Thank you for reaching out. I'll review your inquiry and get back to you promptly.
+              </p>
+              <button
+                type="button"
+                class="btn btn-vibrant-outline"
+                (click)="resetForm()"
+              >
+                Send Another Message
+              </button>
+            </div>
+          } @else {
+            <form (ngSubmit)="onSubmit()" #contactForm="ngForm" novalidate>
+              <h3 class="h4 text-white fw-bold mb-4">Send a Direct Message</h3>
+
+              <!-- Name floating input -->
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control vibrant-input"
+                  id="contactName"
+                  placeholder="Your Name"
+                  name="name"
+                  [(ngModel)]="formData.name"
+                  required
+                />
+                <label for="contactName">Your Full Name</label>
+              </div>
+
+              <!-- Email floating input -->
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control vibrant-input"
+                  id="contactEmail"
+                  placeholder="name@example.com"
+                  name="email"
+                  [(ngModel)]="formData.email"
+                  required
+                  email
+                />
+                <label for="contactEmail">Email Address</label>
+              </div>
+
+              <!-- Subject floating input -->
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control vibrant-input"
+                  id="contactSubject"
+                  placeholder="Project Inquiry"
+                  name="subject"
+                  [(ngModel)]="formData.subject"
+                />
+                <label for="contactSubject">Subject / Topic (Optional)</label>
+              </div>
+
+              <!-- Message floating textarea -->
+              <div class="form-floating mb-4">
+                <textarea
+                  class="form-control vibrant-input text-area-tall"
+                  placeholder="Your Message"
+                  id="contactMessage"
+                  name="message"
+                  [(ngModel)]="formData.message"
+                  style="height: 140px;"
+                  required
+                ></textarea>
+                <label for="contactMessage">Your Message</label>
+              </div>
+
+              <!-- Submit Button -->
+              <button
+                type="submit"
+                class="btn btn-vibrant-primary w-100 py-3"
+                [disabled]="isSubmitting || !contactForm.form.valid"
+              >
+                @if (isSubmitting) {
+                  <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                  <span>Transmitting Message...</span>
+                } @else {
+                  <span>Send Message</span>
+                  <i class="bi bi-send-fill ms-2"></i>
+                }
+              </button>
+            </form>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

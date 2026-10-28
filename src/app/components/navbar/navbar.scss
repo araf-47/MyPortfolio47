@@ -1,0 +1,122 @@
+.navbar-wrapper {
+  padding: 1.25rem 0;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 1050;
+
+  &.scrolled {
+    padding: 0.8rem 0;
+    background: rgba(9, 10, 22, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.brand-logo {
+  .logo-symbol {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--neon-magenta), var(--neon-purple));
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    box-shadow: 0 0 15px rgba(255, 0, 122, 0.4);
+    transition: transform 0.3s ease;
+  }
+
+  &:hover .logo-symbol {
+    transform: rotate(10deg) scale(1.05);
+  }
+
+  .brand-text {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+
+    .brand-dot {
+      color: var(--neon-cyan);
+    }
+  }
+}
+
+.nav-links-container {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(10px);
+}
+
+.nav-anchor {
+  color: var(--text-muted) !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.45rem 1rem !important;
+  border-radius: var(--radius-pill);
+  transition: all 0.25s ease;
+
+  &:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.06);
+    text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+  }
+}
+
+.mobile-toggle {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover, &.active {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+  }
+}
+
+.mobile-menu-drawer {
+  background: rgba(12, 14, 30, 0.96);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+  animation: slideDown 0.3s ease-out;
+
+  .mobile-nav-link {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--neon-cyan);
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

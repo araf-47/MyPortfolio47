@@ -1,0 +1,158 @@
+<section id="projects" class="projects-section py-5 position-relative">
+  <div class="container py-lg-4">
+    <!-- Header -->
+    <div class="text-center mb-5">
+      <div class="section-badge">
+        <i class="bi bi-folder-check"></i>
+        <span>Featured Creations</span>
+      </div>
+      <h2 class="section-title">
+        Selected <span class="gradient-text">Engineering Projects</span>
+      </h2>
+      <p class="section-subtitle">
+        A preview of full-stack systems, cloud gateways, and mobile architectures designed for scalability.
+      </p>
+    </div>
+
+    <!-- 4 Projects Grid -->
+    <div class="row g-4">
+      @for (project of projects; track project.id) {
+        <div class="col-md-6 col-lg-6">
+          <div class="project-card glass-panel h-100 d-flex flex-column overflow-hidden position-relative">
+            <!-- Project Image Container -->
+            <div class="project-img-wrapper position-relative overflow-hidden">
+              <img
+                [src]="project.image"
+                [alt]="project.title"
+                class="project-img w-100"
+                loading="lazy"
+              />
+              <div class="img-gradient-overlay"></div>
+              
+              @if (project.featured) {
+                <div class="featured-badge">
+                  <i class="bi bi-star-fill me-1"></i> Featured
+                </div>
+              }
+            </div>
+
+            <!-- Card Content Body -->
+            <div class="p-4 p-md-4 d-flex flex-column flex-grow-1 justify-content-between">
+              <div>
+                <div class="project-subtitle mb-1">{{ project.subtitle }}</div>
+                <h3 class="project-title mb-3">{{ project.title }}</h3>
+                <p class="project-desc mb-4 text-muted">
+                  {{ project.description }}
+                </p>
+              </div>
+
+              <div>
+                <!-- Tech Stack Tags Row -->
+                <div class="tech-tags-row d-flex flex-wrap gap-2 mb-4">
+                  @for (tag of project.tags; track tag) {
+                    <span class="tech-tag">{{ tag }}</span>
+                  }
+                </div>
+
+                <!-- Action Button -->
+                <div class="d-flex align-items-center justify-content-between pt-2 border-top border-secondary border-opacity-25">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-project-action"
+                    (click)="openDetails(project)"
+                  >
+                    <span>View Details</span>
+                    <i class="bi bi-arrow-up-right ms-2"></i>
+                  </button>
+
+                  <div class="d-flex gap-2">
+                    <a
+                      [href]="project.githubUrl"
+                      class="icon-link-btn"
+                      aria-label="GitHub Repository"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <i class="bi bi-github"></i>
+                    </a>
+                    <a
+                      [href]="project.demoUrl"
+                      class="icon-link-btn"
+                      aria-label="Live Demo"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <i class="bi bi-box-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Project Details Modal Backdrop & Dialog -->
+  @if (selectedProject) {
+    <div class="custom-modal-backdrop" (click)="closeDetails()">
+      <div class="custom-modal-dialog glass-panel" (click)="$event.stopPropagation()">
+        <div class="modal-header d-flex justify-content-between align-items-center p-4 border-bottom border-secondary border-opacity-25">
+          <h4 class="modal-title fw-bold text-white mb-0">
+            {{ selectedProject.title }}
+          </h4>
+          <button
+            type="button"
+            class="close-modal-btn"
+            (click)="closeDetails()"
+            aria-label="Close dialog"
+          >
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+
+        <div class="modal-body p-4">
+          <div class="modal-img-wrapper mb-4 rounded-3 overflow-hidden">
+            <img
+              [src]="selectedProject.image"
+              [alt]="selectedProject.title"
+              class="img-fluid w-100"
+            />
+          </div>
+
+          <div class="mb-3">
+            <span class="text-uppercase fw-bold text-cyan small">{{ selectedProject.subtitle }}</span>
+          </div>
+
+          <p class="text-light leading-relaxed mb-4">
+            {{ selectedProject.fullDescription }}
+          </p>
+
+          <h5 class="h6 text-white text-uppercase fw-bold mb-3">Technologies Leveraged</h5>
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            @for (tag of selectedProject.tags; track tag) {
+              <span class="tech-tag">{{ tag }}</span>
+            }
+          </div>
+        </div>
+
+        <div class="modal-footer d-flex justify-content-end gap-2 p-4 border-top border-secondary border-opacity-25">
+          <button type="button" class="btn btn-vibrant-outline" (click)="closeDetails()">
+            Close
+          </button>
+          <a
+            [href]="selectedProject.demoUrl"
+            class="btn btn-vibrant-primary"
+            target="_blank"
+            rel="noopener"
+          >
+            <span>Live Demonstration</span>
+            <i class="bi bi-arrow-up-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  }
+</section>

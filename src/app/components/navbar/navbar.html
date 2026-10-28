@@ -1,0 +1,94 @@
+<header class="navbar-wrapper fixed-top" [class.scrolled]="isScrolled">
+  <div class="container d-flex align-items-center justify-content-between">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-logo d-flex align-items-center text-decoration-none">
+      <div class="logo-symbol me-2">
+        <i class="bi bi-code-slash"></i>
+      </div>
+      <span class="brand-text">
+        <span class="brand-name">ARAF</span>
+        <span class="brand-dot">.</span>
+      </span>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="d-none d-md-flex align-items-center nav-links-container">
+      <ul class="nav mb-0">
+        @for (item of navItems; track item.label) {
+          <li class="nav-item">
+            <a class="nav-link nav-anchor" [href]="item.href">{{ item.label }}</a>
+          </li>
+        }
+      </ul>
+
+      <a
+        href="/documents/Araf-Resume.pdf"
+        class="btn btn-sm btn-vibrant-outline ms-3"
+        target="_blank"
+        rel="noopener"
+        download
+      >
+        <i class="bi bi-download me-1"></i>
+        <span>Resume</span>
+      </a>
+      <a href="#contact" class="btn btn-sm btn-vibrant-primary ms-2">
+        <span>Let's Talk</span>
+        <i class="bi bi-send-fill ms-1"></i>
+      </a>
+    </nav>
+
+    <!-- Mobile Hamburger Button -->
+    <button
+      class="mobile-toggle d-md-none"
+      (click)="toggleMobileMenu()"
+      aria-label="Toggle navigation"
+      [class.active]="isMobileMenuOpen"
+    >
+      <i class="bi" [class.bi-list]="!isMobileMenuOpen" [class.bi-x-lg]="isMobileMenuOpen"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  @if (isMobileMenuOpen) {
+    <div class="mobile-menu-drawer d-md-none">
+      <div class="container py-3">
+        <ul class="list-unstyled mb-0">
+          @for (item of navItems; track item.label) {
+            <li class="py-2 border-bottom border-secondary border-opacity-25">
+              <a
+                class="mobile-nav-link d-block"
+                [href]="item.href"
+                (click)="closeMobileMenu()"
+              >
+                {{ item.label }}
+              </a>
+            </li>
+          }
+          <li class="pt-2">
+            <a
+              href="/documents/Araf-Resume.pdf"
+              class="btn btn-vibrant-outline w-100"
+              target="_blank"
+              rel="noopener"
+              download
+              (click)="closeMobileMenu()"
+            >
+              <i class="bi bi-download me-1"></i>
+              <span>Download Resume</span>
+            </a>
+          </li>
+          <li class="pt-2">
+            <a
+              href="#contact"
+              class="btn btn-vibrant-primary w-100"
+              (click)="closeMobileMenu()"
+            >
+              <span>Let's Talk</span>
+              <i class="bi bi-send-fill ms-1"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  }
+</header>

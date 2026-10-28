@@ -1,0 +1,301 @@
+/* Bootstrap 5 & Bootstrap Icons */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+/* ==========================================================================
+   CSS Custom Properties & Color Palette (Punchy High-Contrast Dark Theme)
+   ========================================================================== */
+:root {
+  --bg-primary: #090a16;
+  --bg-secondary: #0f1124;
+  --bg-card: rgba(19, 23, 48, 0.75);
+  --bg-card-hover: rgba(28, 33, 68, 0.85);
+  --bg-glass: rgba(255, 255, 255, 0.04);
+
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-dim: #a0aec0;
+
+  --neon-cyan: #00f2fe;
+  --neon-magenta: #ff007a;
+  --neon-purple: #7928ca;
+  --neon-emerald: #00ff87;
+  --neon-amber: #fee140;
+  --neon-blue: #4facfe;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(0, 242, 254, 0.35);
+
+  --gradient-primary: linear-gradient(135deg, #ff007a 0%, #7928ca 50%, #00f2fe 100%);
+  --gradient-cyan-blue: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  --gradient-emerald: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
+  --gradient-sunset: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  --gradient-dark-mesh: radial-gradient(at 10% 10%, rgba(121, 40, 202, 0.25) 0px, transparent 50%),
+                        radial-gradient(at 90% 15%, rgba(0, 242, 254, 0.22) 0px, transparent 55%),
+                        radial-gradient(at 50% 90%, rgba(255, 0, 122, 0.20) 0px, transparent 60%);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 9999px;
+
+  --shadow-glow-cyan: 0 0 25px rgba(0, 242, 254, 0.35);
+  --shadow-glow-magenta: 0 0 25px rgba(255, 0, 122, 0.35);
+  --shadow-glow-purple: 0 0 30px rgba(121, 40, 202, 0.45);
+}
+
+/* ==========================================================================
+   Base & Resets
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  background-image: var(--gradient-dark-mesh);
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family: inherit;
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Selection */
+::selection {
+  background: var(--neon-magenta);
+  color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--neon-purple), var(--neon-cyan));
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-magenta);
+}
+
+/* ==========================================================================
+   Typography & Vibrant Gradient Text
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.gradient-text {
+  background: var(--gradient-primary);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 6s ease infinite alternate;
+}
+
+.gradient-text-cyan {
+  background: var(--gradient-cyan-blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-sunset {
+  background: var(--gradient-sunset);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-emerald {
+  background: var(--gradient-emerald);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   Glassmorphism & Card Styles
+   ========================================================================== */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(0, 242, 254, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* Section Header Badge */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.1rem;
+  background: rgba(121, 40, 202, 0.18);
+  border: 1px solid rgba(121, 40, 202, 0.4);
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--neon-cyan);
+  box-shadow: 0 0 15px rgba(121, 40, 202, 0.25);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  color: #cbd5e1;
+  font-size: 1.1rem;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Ensure secondary text is high-contrast and crystal clear on dark background */
+.text-muted {
+  color: #cbd5e1 !important;
+}
+
+.text-dim {
+  color: #a0aec0 !important;
+}
+
+.text-light-silver {
+  color: #e2e8f0 !important;
+}
+
+/* ==========================================================================
+   Buttons with High-Impact Glows
+   ========================================================================== */
+.btn-vibrant-primary {
+  background: var(--gradient-primary);
+  background-size: 200% 200%;
+  color: #ffffff !important;
+  font-weight: 700;
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-pill);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 0 20px rgba(255, 0, 122, 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.btn-vibrant-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 35px rgba(255, 0, 122, 0.65), 0 0 15px rgba(0, 242, 254, 0.4);
+  color: #ffffff !important;
+}
+
+.btn-vibrant-outline {
+  background: transparent;
+  color: #ffffff !important;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-pill);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.btn-vibrant-outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.35);
+  transform: translateY(-3px);
+  color: var(--neon-cyan) !important;
+}
+
+/* ==========================================================================
+   Keyframe Animations
+   ========================================================================== */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes floatSmooth {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulseNeon {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.3), 0 0 50px rgba(121, 40, 202, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(0, 242, 254, 0.6), 0 0 80px rgba(255, 0, 122, 0.4);
+  }
+}
+
+@keyframes rotateBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Staggered entrance helpers */
+.animate-float {
+  animation: floatSmooth 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseNeon 3s ease-in-out infinite;
+}
+
+/* Accessibility: reduce motion if user prefers */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

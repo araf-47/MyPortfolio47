@@ -1,0 +1,127 @@
+.about-section {
+  position: relative;
+  z-index: 1;
+}
+
+.bio-card {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  .bio-avatar-chip {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(0, 242, 254, 0.1);
+    border: 1px solid rgba(0, 242, 254, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+  }
+
+  .philosophy-sub {
+    color: var(--neon-cyan);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .bio-text {
+    line-height: 1.8;
+
+    .lead-text {
+      color: #ffffff;
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.7;
+    }
+
+    .bio-para {
+      color: #e2e8f0;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+  }
+}
+
+.strength-card {
+  padding: 0.75rem 0.5rem;
+
+  .strength-icon {
+    font-size: 1.35rem;
+    color: var(--neon-cyan);
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+
+  .strength-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
+  }
+
+  .strength-desc {
+    font-size: 0.84rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+  }
+}
+
+.stat-box {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 0, 122, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  .stat-icon-wrapper {
+    font-size: 1.6rem;
+  }
+
+  .stat-number {
+    font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 0.35rem;
+  }
+}
+
+.quick-fact-card {
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  background: linear-gradient(145deg, rgba(15, 17, 36, 0.8) 0%, rgba(20, 24, 52, 0.9) 100%);
+
+  .fact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255, 0, 122, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+
+  .location-value {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .fact-desc {
+    color: #cbd5e1;
+    line-height: 1.6;
+    font-size: 0.9rem;
+  }
+}

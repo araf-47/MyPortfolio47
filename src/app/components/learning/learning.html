@@ -1,0 +1,38 @@
+<section id="learning" class="learning-section py-5 position-relative">
+  <div class="container py-lg-4">
+    <!-- Header -->
+    <div class="text-center mb-5">
+      <div class="section-badge">
+        <i class="bi bi-mortarboard-fill"></i>
+        <span>Growth & Learning</span>
+      </div>
+      <h2 class="section-title">
+        Currently <span class="gradient-text">Learning & Exploring</span>
+      </h2>
+      <p class="section-subtitle">
+        As a fresher, I'm continuously upskilling through hands-on projects and focused study.
+      </p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      @for (topic of learningTopics; track topic.name) {
+        <div class="col-md-6 col-lg-5">
+          <div class="glass-panel learning-card p-4 h-100">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="learning-icon">
+                <i class="bi {{ topic.icon }}"></i>
+              </div>
+              <div class="flex-grow-1">
+                <div class="learning-name">{{ topic.name }}</div>
+                <div class="learning-progress-label">{{ topic.progress }}% familiarity</div>
+              </div>
+            </div>
+            <div class="progress learning-progress" role="progressbar" [attr.aria-valuenow]="topic.progress" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar" [style.width.%]="topic.progress"></div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

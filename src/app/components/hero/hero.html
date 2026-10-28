@@ -1,0 +1,112 @@
+<section id="hero" class="hero-section position-relative overflow-hidden d-flex align-items-center">
+  <!-- Glowing Background Mesh Blobs -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+  <div class="glow-orb orb-3"></div>
+
+  <div class="container position-relative z-1 py-5">
+    <div class="row align-items-center min-vh-100 pt-5 pt-lg-0 gy-5">
+      
+      <!-- Left Column: Introduction & CTAs -->
+      <div class="col-lg-7 text-center text-lg-start">
+        <!-- Status Pill -->
+        <div class="badge-status-container mb-4">
+          <span class="pulse-indicator"></span>
+          <span class="status-text">Available for High-Impact Projects</span>
+        </div>
+
+        <!-- Greeting & Name -->
+        <h2 class="hero-greeting mb-2">
+          Hi there, I'm <span class="gradient-text hero-name">{{ typedName() }}<span class="typing-cursor">|</span></span>.
+        </h2>
+
+        <!-- Role Title -->
+        <h1 class="hero-title mb-4">
+          Full-Stack <span class="gradient-text-cyan">Software Developer</span>
+        </h1>
+
+        <!-- Headline / Elevator pitch -->
+        <p class="hero-description mb-4 lead">
+          {{ profile.headline }}. Specialized in architecting scalable 
+          <span class="text-highlight">Spring Boot</span> microservices & engineering responsive, interactive 
+          <span class="text-highlight">Angular</span> applications.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start mb-5">
+          <a href="#projects" class="btn btn-vibrant-primary">
+            <span>View My Work</span>
+            <i class="bi bi-arrow-right-short fs-4"></i>
+          </a>
+          <a href="#contact" class="btn btn-vibrant-outline">
+            <i class="bi bi-chat-dots-fill"></i>
+            <span>Get in Touch</span>
+          </a>
+          <a
+            href="/documents/Araf-Resume.pdf"
+            class="btn btn-vibrant-outline"
+            target="_blank"
+            rel="noopener"
+            download
+          >
+            <i class="bi bi-download"></i>
+            <span>Download Resume</span>
+          </a>
+        </div>
+
+        <!-- Tech Snapshot Pills -->
+        <div class="hero-tech-stack">
+          <span class="tech-label">CORE DOMAINS:</span>
+          <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start mt-2">
+            <span class="tech-pill"><i class="bi bi-cup-hot-fill text-warning"></i> Java</span>
+            <span class="tech-pill"><i class="bi bi-shield-shaded text-success"></i> Spring Boot</span>
+            <span class="tech-pill"><i class="bi bi-triangle-fill text-danger"></i> Angular</span>
+            <span class="tech-pill"><i class="bi bi-database-fill text-info"></i> PostgreSQL</span>
+            <span class="tech-pill"><i class="bi bi-phone text-primary"></i> Flutter</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Animated Hero Profile with Glowing Border -->
+      <div class="col-lg-5 d-flex justify-content-center">
+        <div class="hero-avatar-wrapper position-relative">
+          <!-- Animated rotating border aura -->
+          <div class="avatar-glow-ring"></div>
+          
+          <!-- Profile Card/Image Frame -->
+          <div class="avatar-frame">
+            <img
+              [src]="profile.avatar"
+              [alt]="profile.name"
+              class="avatar-image img-fluid"
+              loading="eager"
+            />
+          </div>
+
+          <!-- Floating Experience Badge -->
+          <div class="floating-badge badge-top-right animate-float">
+            <div class="badge-icon">
+              <i class="bi bi-code-square"></i>
+            </div>
+            <div>
+              <div class="badge-value">{{ profile.experienceYears }}</div>
+              <div class="badge-title">Experience</div>
+            </div>
+          </div>
+
+          <!-- Floating Completed Projects Badge -->
+          <div class="floating-badge badge-bottom-left animate-float" style="animation-delay: 2.5s;">
+            <div class="badge-icon badge-icon-alt">
+              <i class="bi bi-check2-circle"></i>
+            </div>
+            <div>
+              <div class="badge-value">{{ profile.completedProjects }}</div>
+              <div class="badge-title">Projects Built</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,65 @@
+<section id="skills" class="skills-section py-5 position-relative">
+  <div class="container py-lg-4">
+    <!-- Header -->
+    <div class="text-center mb-5">
+      <div class="section-badge">
+        <i class="bi bi-stack"></i>
+        <span>Technical Arsenal</span>
+      </div>
+      <h2 class="section-title">
+        Skills & <span class="gradient-text">Core Competencies</span>
+      </h2>
+      <p class="section-subtitle">
+        A structured breakdown of technologies I leverage daily to engineer high-performance web systems.
+      </p>
+    </div>
+
+    <!-- 4 Grouped Skill Cards Grid -->
+    <div class="row g-4">
+      @for (category of skillCategories; track category.category) {
+        <div class="col-md-6 col-lg-6">
+          <div class="glass-panel skill-category-card h-100 p-4 p-md-4 position-relative overflow-hidden">
+            <!-- Decorative Accent Gradient Bar -->
+            <div class="category-accent-bar" [style.background]="category.accentGradient"></div>
+
+            <!-- Category Header -->
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <div class="d-flex align-items-center gap-3">
+                <div class="category-icon-box" [style.background]="category.accentGradient">
+                  <i class="bi {{ category.icon }} text-white"></i>
+                </div>
+                <div>
+                  <h3 class="h5 mb-0 fw-bold text-white">{{ category.title }}</h3>
+                  <span class="category-tag">{{ category.skills.length }} Technologies</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Skills List Grid -->
+            <div class="skills-list d-flex flex-column gap-3">
+              @for (skill of category.skills; track skill.name) {
+                <div class="skill-item p-3 d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="skill-icon" [style.color]="skill.color">
+                      <i class="bi {{ skill.icon }}"></i>
+                    </div>
+                    <div>
+                      <div class="skill-name">{{ skill.name }}</div>
+                      <div class="skill-level">{{ skill.level }}</div>
+                    </div>
+                  </div>
+                  
+                  <div class="skill-badge" [style.border-color]="skill.color">
+                    <span class="dot" [style.background-color]="skill.color"></span>
+                    <span>Proficient</span>
+                  </div>
+                </div>
+              }
+            </div>
+
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
