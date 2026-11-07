@@ -66,10 +66,10 @@
             @for (stat of stats; track stat.label) {
               <div class="col-6">
                 <div class="glass-panel p-3 p-md-4 stat-box text-center h-100">
-                  <div class="stat-icon-wrapper mb-2" [style.color]="stat.color">
+                  <div class="stat-icon-wrapper mb-2">
                     <i class="bi {{ stat.icon }}"></i>
                   </div>
-                  <div class="stat-number" [style.color]="stat.color">{{ stat.value }}</div>
+                  <div class="stat-number">{{ stat.value }}</div>
                   <div class="stat-label">{{ stat.label }}</div>
                 </div>
               </div>

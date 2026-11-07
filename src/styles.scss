@@ -22,6 +22,14 @@
   --shadow: 4px 4px 0 #111111;
   --shadow-lg: 6px 6px 0 #111111;
   --shadow-xl: 10px 10px 0 #111111;
+
+  /* Legacy variable fallbacks */
+  --neon-cyan: var(--blue);
+  --neon-magenta: var(--yellow);
+  --neon-purple: var(--blue);
+  --neon-emerald: var(--green);
+  --neon-amber: var(--yellow);
+  --neon-blue: var(--blue);
 }
 
 /* ==========================================================================
