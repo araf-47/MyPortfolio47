@@ -1,112 +1,128 @@
 .navbar-wrapper {
   padding: 1.25rem 0;
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: padding 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
   z-index: 1050;
 
   &.scrolled {
     padding: 0.8rem 0;
-    background: rgba(9, 10, 22, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    background: var(--bg);
+    border-bottom: 2px solid var(--ink);
+    box-shadow: 0 4px 0 var(--ink);
   }
 }
 
 .brand-logo {
   .logo-symbol {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     border-radius: 10px;
-    background: linear-gradient(135deg, var(--neon-magenta), var(--neon-purple));
-    color: #ffffff;
+    background: var(--yellow);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    color: var(--ink);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
-    box-shadow: 0 0 15px rgba(255, 0, 122, 0.4);
-    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   &:hover .logo-symbol {
-    transform: rotate(10deg) scale(1.05);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--ink);
   }
 
   .brand-text {
-    font-size: 1.35rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
 
     .brand-dot {
-      color: var(--neon-cyan);
+      color: var(--blue);
     }
   }
 }
 
 .nav-links-container {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-pill);
-  backdrop-filter: blur(10px);
+  background: var(--surface);
+  border: var(--border);
+  padding: 0.4rem 0.85rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
 }
 
 .nav-anchor {
-  color: var(--text-muted) !important;
-  font-weight: 500;
+  color: var(--ink) !important;
+  font-weight: 700;
   font-size: 0.95rem;
   padding: 0.45rem 1rem !important;
-  border-radius: var(--radius-pill);
-  transition: all 0.25s ease;
+  border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
 
   &:hover {
-    color: #ffffff !important;
-    background: rgba(255, 255, 255, 0.06);
-    text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+    color: var(--ink) !important;
+    background: var(--yellow);
+  }
+}
+
+.btn-sm.btn-vibrant-outline,
+.btn-sm.btn-vibrant-primary {
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-size: 0.88rem;
+
+  &:hover, &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--ink);
   }
 }
 
 .mobile-toggle {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  width: 42px;
-  height: 42px;
+  background: var(--surface);
+  border: var(--border);
+  color: var(--ink);
+  width: 44px;
+  height: 44px;
   border-radius: 10px;
+  box-shadow: var(--shadow);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.35rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 
   &:hover, &.active {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: var(--neon-cyan);
-    color: var(--neon-cyan);
+    background: var(--yellow);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--ink);
+    color: var(--ink);
   }
 }
 
 .mobile-menu-drawer {
-  background: rgba(12, 14, 30, 0.96);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+  background: var(--surface);
+  border-bottom: 2px solid var(--ink);
+  box-shadow: var(--shadow-lg);
   animation: slideDown 0.3s ease-out;
 
   .mobile-nav-link {
-    color: var(--text-main);
+    color: var(--ink);
     text-decoration: none;
     font-size: 1.05rem;
-    font-weight: 600;
+    font-weight: 700;
     padding: 0.5rem 0;
     transition: color 0.2s ease;
 
     &:hover {
-      color: var(--neon-cyan);
+      color: var(--blue);
     }
+  }
+
+  .border-secondary {
+    border-color: var(--ink) !important;
   }
 }
 

@@ -1,43 +1,12 @@
 .hero-section {
   min-height: 100vh;
   padding: 6rem 0 4rem;
-  background-color: var(--bg-primary);
+  background-color: var(--bg);
 }
 
-/* Background Glowing Orbs */
+/* Remove Background Glowing Orbs */
 .glow-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  pointer-events: none;
-  opacity: 0.55;
-  z-index: 0;
-
-  &.orb-1 {
-    width: 480px;
-    height: 480px;
-    top: -8%;
-    right: -5%;
-    background: radial-gradient(circle, rgba(121, 40, 202, 0.6) 0%, rgba(255, 0, 122, 0.2) 70%, transparent 100%);
-    animation: floatSmooth 8s ease-in-out infinite;
-  }
-
-  &.orb-2 {
-    width: 420px;
-    height: 420px;
-    bottom: 5%;
-    left: -8%;
-    background: radial-gradient(circle, rgba(0, 242, 254, 0.5) 0%, rgba(79, 172, 254, 0.15) 70%, transparent 100%);
-    animation: floatSmooth 9s ease-in-out infinite reverse;
-  }
-
-  &.orb-3 {
-    width: 320px;
-    height: 320px;
-    top: 40%;
-    left: 45%;
-    background: radial-gradient(circle, rgba(255, 0, 122, 0.35) 0%, transparent 70%);
-  }
+  display: none;
 }
 
 .badge-status-container {
@@ -45,20 +14,19 @@
   align-items: center;
   gap: 0.6rem;
   padding: 0.45rem 1.15rem;
-  background: rgba(0, 255, 135, 0.08);
-  border: 1px solid rgba(0, 255, 135, 0.3);
+  background: var(--surface);
+  border: var(--border);
   border-radius: var(--radius-pill);
   font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--neon-emerald);
-  box-shadow: 0 0 15px rgba(0, 255, 135, 0.2);
+  font-weight: 700;
+  color: var(--ink);
+  box-shadow: var(--shadow);
 
   .pulse-indicator {
-    width: 8px;
-    height: 8px;
-    background-color: var(--neon-emerald);
+    width: 10px;
+    height: 10px;
+    background-color: var(--green);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--neon-emerald);
     animation: statusPulse 2s infinite;
   }
 }
@@ -66,32 +34,33 @@
 @keyframes statusPulse {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(0, 255, 135, 0.7);
+    opacity: 0.85;
   }
   70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 8px rgba(0, 255, 135, 0);
+    transform: scale(1.15);
+    opacity: 1;
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(0, 255, 135, 0);
+    opacity: 0.85;
   }
 }
 
 .hero-greeting {
   font-size: clamp(1.4rem, 2.5vw, 1.85rem);
-  font-weight: 600;
-  color: var(--text-muted);
+  font-weight: 700;
+  color: var(--ink);
 
   .hero-name {
-    font-weight: 800;
+    font-weight: 700;
+    color: var(--ink);
   }
 
   .typing-cursor {
     display: inline-block;
     margin-left: 2px;
-    font-weight: 400;
-    color: var(--neon-cyan);
+    font-weight: 700;
+    color: var(--blue);
     animation: blinkCursor 0.8s steps(2, start) infinite;
   }
 }
@@ -106,21 +75,55 @@
 }
 
 .hero-title {
-  font-size: clamp(2.4rem, 5.2vw, 4.4rem);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1.05;
+  color: var(--ink);
+
+  .highlight-block {
+    background: var(--yellow);
+    border: var(--border);
+    padding: 0 10px;
+    display: inline-block;
+    transform: rotate(-1.5deg);
+    color: var(--ink);
+    border-radius: 4px;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
 }
 
 .hero-description {
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-  color: var(--text-muted);
+  color: var(--ink-soft);
   max-width: 620px;
-  line-height: 1.7;
+  line-height: 1.6;
+  font-weight: 500;
 
   .text-highlight {
-    color: #ffffff;
-    font-weight: 600;
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--yellow);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 3px;
+  }
+}
+
+/* Hero CTA: View My Work button is blue fill with white text */
+.hero-section {
+  .btn-vibrant-primary {
+    background: var(--blue);
+    color: #ffffff !important;
+    border: var(--border);
+    box-shadow: var(--shadow-lg);
+
+    &:hover, &:active {
+      background: var(--blue);
+      color: #ffffff !important;
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--ink);
+    }
   }
 }
 
@@ -128,8 +131,8 @@
   .tech-label {
     font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    color: var(--ink);
   }
 
   .tech-pill {
@@ -137,126 +140,143 @@
     align-items: center;
     gap: 0.45rem;
     padding: 0.35rem 0.85rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--surface);
+    border: var(--border);
     border-radius: var(--radius-pill);
     font-size: 0.85rem;
-    font-weight: 500;
-    color: #e2e8f0;
-    transition: all 0.25s ease;
+    font-weight: 700;
+    color: var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: var(--neon-cyan);
-      transform: translateY(-2px);
+      background: var(--yellow);
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--ink);
     }
   }
 }
 
-/* Hero Avatar with Animated Glowing Ring */
+/* Hero Avatar with Solid 5px Ink Ring and Hard Shadow */
 .hero-avatar-wrapper {
-  width: 330px;
-  height: 330px;
+  width: 310px;
+  height: 310px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   @media (min-width: 768px) {
-    width: 390px;
-    height: 390px;
+    width: 370px;
+    height: 370px;
   }
 
   .avatar-glow-ring {
-    position: absolute;
-    inset: -6px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--neon-magenta), var(--neon-purple), var(--neon-cyan), var(--neon-emerald));
-    background-size: 300% 300%;
-    animation: rotateBorder 6s linear infinite, gradientShift 4s ease infinite alternate;
-    box-shadow: 0 0 35px rgba(255, 0, 122, 0.4), 0 0 45px rgba(0, 242, 254, 0.3);
-    z-index: 1;
+    display: none;
   }
 
   .avatar-frame {
     position: relative;
-    width: calc(100% - 10px);
-    height: calc(100% - 10px);
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     overflow: hidden;
-    background: var(--bg-primary);
+    background: var(--surface);
     z-index: 2;
-    border: 4px solid var(--bg-primary);
+    border: 5px solid var(--ink);
+    box-shadow: var(--shadow-xl);
 
     .avatar-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transform: scale(1.02);
-      transition: transform 0.5s ease;
+      transition: transform 0.4s ease;
     }
 
     &:hover .avatar-image {
-      transform: scale(1.08);
+      transform: scale(1.06);
     }
   }
 }
 
-/* Floating Glass Badges */
+/* Floating Sticker Badges */
 .floating-badge {
   position: absolute;
-  background: rgba(15, 17, 36, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
   padding: 0.65rem 1.1rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius);
+  border: var(--border);
+  box-shadow: var(--shadow);
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
   z-index: 5;
+  transition: transform 0.2s ease;
 
   &.badge-top-right {
     top: 5%;
     right: -15px;
-    border-color: rgba(0, 242, 254, 0.4);
+    background: var(--blue);
+    color: #ffffff;
+    transform: rotate(3deg);
+
+    .badge-icon {
+      background: #ffffff;
+      color: var(--blue);
+      border: var(--border);
+    }
+
+    .badge-value {
+      color: #ffffff;
+    }
+
+    .badge-title {
+      color: rgba(255, 255, 255, 0.9);
+    }
   }
 
   &.badge-bottom-left {
     bottom: 5%;
     left: -20px;
-    border-color: rgba(255, 0, 122, 0.4);
+    background: var(--yellow);
+    color: var(--ink);
+    transform: rotate(-3deg);
+
+    .badge-icon {
+      background: var(--surface);
+      color: var(--ink);
+      border: var(--border);
+    }
+
+    .badge-value {
+      color: var(--ink);
+    }
+
+    .badge-title {
+      color: var(--ink-soft);
+    }
   }
 
   .badge-icon {
     width: 36px;
     height: 36px;
-    border-radius: 9px;
-    background: rgba(0, 242, 254, 0.15);
-    color: var(--neon-cyan);
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.15rem;
-
-    &.badge-icon-alt {
-      background: rgba(255, 0, 122, 0.15);
-      color: var(--neon-magenta);
-    }
   }
 
   .badge-value {
-    font-weight: 800;
-    font-size: 1.1rem;
-    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.15rem;
     line-height: 1.1;
   }
 
   .badge-title {
     font-size: 0.72rem;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--text-dim);
   }
 }
