@@ -4,27 +4,29 @@
 }
 
 .contact-info-card {
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+
+  .contact-card-title {
+    color: var(--ink);
+  }
 
   .social-item {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-md);
-    transition: all 0.25s ease;
+    background: var(--surface);
+    border: var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.07);
-      border-color: var(--neon-cyan);
-      transform: translateX(5px);
-
-      .social-icon-box {
-        background: var(--gradient-primary);
-        color: #ffffff;
-        box-shadow: 0 0 15px rgba(255, 0, 122, 0.5);
-      }
+      background: var(--bg);
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--ink);
 
       .social-arrow {
-        color: var(--neon-cyan);
+        color: var(--blue);
         transform: translateX(4px);
       }
     }
@@ -32,62 +34,78 @@
     .social-icon-box {
       width: 42px;
       height: 42px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--neon-cyan);
+      border-radius: 8px;
+      background: var(--yellow);
+      border: var(--border);
+      color: var(--ink);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.25rem;
-      transition: all 0.25s ease;
     }
 
     .social-title {
       font-weight: 700;
-      color: #ffffff;
+      color: var(--ink);
       font-size: 0.95rem;
     }
 
     .social-sub {
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      font-weight: 500;
     }
 
     .social-arrow {
-      color: var(--text-dim);
-      transition: all 0.25s ease;
+      color: var(--ink);
+      transition: transform 0.2s ease, color 0.2s ease;
     }
   }
 
   .availability-pill {
-    background: rgba(0, 255, 135, 0.06);
-    border: 1px solid rgba(0, 255, 135, 0.2);
+    background: var(--surface);
+    border: var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+
+    .text-ink {
+      color: var(--ink);
+    }
 
     .avail-dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: var(--neon-emerald);
-      box-shadow: 0 0 8px var(--neon-emerald);
+      background: var(--green);
     }
   }
 }
 
 .form-card {
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
 
-  /* Floating Form Controls with Vibrant Focus States */
+  .contact-card-title {
+    color: var(--ink);
+  }
+
+  /* Neo-Brutalist Form Controls */
   .vibrant-input {
-    background-color: rgba(9, 10, 22, 0.65) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: var(--radius-md);
-    color: #ffffff !important;
-    transition: all 0.25s ease;
+    background-color: var(--surface) !important;
+    border: var(--border) !important;
+    border-radius: var(--radius) !important;
+    color: var(--ink) !important;
+    box-shadow: 2px 2px 0 var(--ink);
+    transition: outline 0.15s ease, background 0.15s ease;
 
     &:focus {
-      border-color: var(--neon-cyan);
-      box-shadow: 0 0 20px rgba(0, 242, 254, 0.35);
-      background-color: rgba(15, 17, 36, 0.85) !important;
+      border-color: var(--ink) !important;
+      outline: 3px solid var(--yellow) !important;
+      outline-offset: 2px !important;
+      box-shadow: 2px 2px 0 var(--ink);
+      background-color: var(--surface) !important;
     }
 
     &::placeholder {
@@ -96,15 +114,19 @@
   }
 
   .form-floating > label {
-    color: var(--text-muted);
+    color: var(--ink-soft);
+    font-weight: 600;
     padding-left: 1.25rem;
-    transition: all 0.2s ease;
   }
 
   .form-floating > .vibrant-input:focus ~ label,
   .form-floating > .vibrant-input:not(:placeholder-shown) ~ label {
-    color: var(--neon-cyan);
-    font-weight: 600;
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .text-ink {
+    color: var(--ink);
   }
 }
 
@@ -114,7 +136,11 @@
 
   .success-icon {
     font-size: 4rem;
-    color: var(--neon-emerald);
-    filter: drop-shadow(0 0 20px rgba(0, 255, 135, 0.5));
+    color: var(--green);
   }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

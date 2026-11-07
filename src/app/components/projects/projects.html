@@ -100,7 +100,7 @@
     <div class="custom-modal-backdrop" (click)="closeDetails()">
       <div class="custom-modal-dialog glass-panel" (click)="$event.stopPropagation()">
         <div class="modal-header d-flex justify-content-between align-items-center p-4 border-bottom border-secondary border-opacity-25">
-          <h4 class="modal-title fw-bold text-white mb-0">
+          <h4 class="modal-title fw-bold mb-0">
             {{ selectedProject.title }}
           </h4>
           <button
@@ -123,14 +123,14 @@
           </div>
 
           <div class="mb-3">
-            <span class="text-uppercase fw-bold text-cyan small">{{ selectedProject.subtitle }}</span>
+            <span class="text-uppercase fw-bold text-blue small">{{ selectedProject.subtitle }}</span>
           </div>
 
-          <p class="text-light leading-relaxed mb-4">
+          <p class="leading-relaxed mb-4 modal-desc">
             {{ selectedProject.fullDescription }}
           </p>
 
-          <h5 class="h6 text-white text-uppercase fw-bold mb-3">Technologies Leveraged</h5>
+          <h5 class="h6 text-uppercase fw-bold mb-3 modal-section-title">Technologies Leveraged</h5>
           <div class="d-flex flex-wrap gap-2 mb-4">
             @for (tag of selectedProject.tags; track tag) {
               <span class="tech-tag">{{ tag }}</span>
