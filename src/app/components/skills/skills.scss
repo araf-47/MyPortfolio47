@@ -4,74 +4,83 @@
 }
 
 .skill-category-card {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 
   &:hover {
-    transform: translateY(-6px);
-    border-color: rgba(0, 242, 254, 0.35);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 242, 254, 0.15);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--ink);
   }
 
+  /* Remove gradient accent bar */
   .category-accent-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
+    display: none;
   }
 
   .category-icon-box {
     width: 44px;
     height: 44px;
-    border-radius: 12px;
+    border-radius: 10px;
+    background: var(--yellow) !important;
+    border: var(--border);
+    box-shadow: 2px 2px 0 var(--ink);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.35rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: var(--ink) !important;
+  }
+
+  .category-title {
+    color: var(--ink);
   }
 
   .category-tag {
     font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--neon-cyan);
+    font-weight: 700;
+    color: var(--blue);
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 }
 
 .skill-item {
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-md);
-  transition: all 0.25s ease;
+  background: var(--surface);
+  border: var(--border);
+  border-radius: 10px;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.15);
-    transform: translateX(4px);
+    background: var(--bg);
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--ink);
   }
 
+  /* Keep original tech icons */
   .skill-icon {
     font-size: 1.55rem;
     width: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
-    filter: drop-shadow(0 0 8px currentColor);
+    filter: none;
   }
 
   .skill-name {
     font-weight: 700;
-    color: #ffffff;
+    color: var(--ink);
     font-size: 1rem;
     line-height: 1.2;
   }
 
   .skill-level {
     font-size: 0.78rem;
-    color: var(--text-muted);
+    color: var(--ink-soft);
+    font-weight: 500;
   }
 
   .skill-badge {
@@ -80,17 +89,19 @@
     gap: 0.45rem;
     padding: 0.25rem 0.65rem;
     border-radius: var(--radius-pill);
-    border: 1px solid;
+    border: var(--border) !important;
     font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-main);
-    background: rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--yellow);
+    box-shadow: 1px 1px 0 var(--ink);
 
     .dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      box-shadow: 0 0 6px currentColor;
+      background-color: var(--ink) !important;
+      box-shadow: none;
     }
   }
 }

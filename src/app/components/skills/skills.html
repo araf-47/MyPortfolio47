@@ -25,11 +25,11 @@
             <!-- Category Header -->
             <div class="d-flex align-items-center justify-content-between mb-4">
               <div class="d-flex align-items-center gap-3">
-                <div class="category-icon-box" [style.background]="category.accentGradient">
-                  <i class="bi {{ category.icon }} text-white"></i>
+                <div class="category-icon-box">
+                  <i class="bi {{ category.icon }}"></i>
                 </div>
                 <div>
-                  <h3 class="h5 mb-0 fw-bold text-white">{{ category.title }}</h3>
+                  <h3 class="h5 mb-0 fw-bold category-title">{{ category.title }}</h3>
                   <span class="category-tag">{{ category.skills.length }} Technologies</span>
                 </div>
               </div>
