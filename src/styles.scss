@@ -3,45 +3,25 @@
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
 /* ==========================================================================
-   CSS Custom Properties & Color Palette (Punchy High-Contrast Dark Theme)
+   CSS Custom Properties & Color Palette (Neo-Brutalist Pop)
    ========================================================================== */
 :root {
-  --bg-primary: #090a16;
-  --bg-secondary: #0f1124;
-  --bg-card: rgba(19, 23, 48, 0.75);
-  --bg-card-hover: rgba(28, 33, 68, 0.85);
-  --bg-glass: rgba(255, 255, 255, 0.04);
+  --bg: #F5F0E6;
+  --surface: #FFFFFF;
+  --ink: #111111;
+  --ink-soft: #2B2B2B;
+  --yellow: #FFD93D;
+  --blue: #3A5BFF;
+  --green: #1F9D55;
+  --placeholder: #D9D2C0;
 
-  --text-main: #f8fafc;
-  --text-muted: #cbd5e1;
-  --text-dim: #a0aec0;
+  --border: 2px solid #111111;
+  --radius: 10px;
+  --radius-pill: 999px;
 
-  --neon-cyan: #00f2fe;
-  --neon-magenta: #ff007a;
-  --neon-purple: #7928ca;
-  --neon-emerald: #00ff87;
-  --neon-amber: #fee140;
-  --neon-blue: #4facfe;
-
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(0, 242, 254, 0.35);
-
-  --gradient-primary: linear-gradient(135deg, #ff007a 0%, #7928ca 50%, #00f2fe 100%);
-  --gradient-cyan-blue: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
-  --gradient-emerald: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
-  --gradient-sunset: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-  --gradient-dark-mesh: radial-gradient(at 10% 10%, rgba(121, 40, 202, 0.25) 0px, transparent 50%),
-                        radial-gradient(at 90% 15%, rgba(0, 242, 254, 0.22) 0px, transparent 55%),
-                        radial-gradient(at 50% 90%, rgba(255, 0, 122, 0.20) 0px, transparent 60%);
-
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 22px;
-  --radius-pill: 9999px;
-
-  --shadow-glow-cyan: 0 0 25px rgba(0, 242, 254, 0.35);
-  --shadow-glow-magenta: 0 0 25px rgba(255, 0, 122, 0.35);
-  --shadow-glow-purple: 0 0 30px rgba(121, 40, 202, 0.45);
+  --shadow: 4px 4px 0 #111111;
+  --shadow-lg: 6px 6px 0 #111111;
+  --shadow-xl: 10px 10px 0 #111111;
 }
 
 /* ==========================================================================
@@ -53,20 +33,19 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--bg-primary);
-  color: var(--text-main);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg);
+  color: var(--ink);
   overflow-x: hidden;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--bg-primary);
-  background-image: var(--gradient-dark-mesh);
-  background-attachment: fixed;
-  color: var(--text-main);
-  font-family: inherit;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
   min-height: 100vh;
   overflow-x: hidden;
   line-height: 1.6;
@@ -74,75 +53,77 @@ body {
 
 /* Selection */
 ::selection {
-  background: var(--neon-magenta);
-  color: #ffffff;
+  background: var(--yellow);
+  color: var(--ink);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--neon-purple), var(--neon-cyan));
-  border-radius: 99px;
+  background: var(--ink);
+  border: 2px solid var(--bg);
+  border-radius: var(--radius-pill);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--neon-magenta);
+  background: var(--ink-soft);
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 3px solid var(--blue) !important;
+  outline-offset: 2px !important;
 }
 
 /* ==========================================================================
-   Typography & Vibrant Gradient Text
+   Typography & Highlighter Block
    ========================================================================== */
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: var(--ink);
 }
 
-.gradient-text {
-  background: var(--gradient-primary);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientShift 6s ease infinite alternate;
-}
-
-.gradient-text-cyan {
-  background: var(--gradient-cyan-blue);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gradient-text-sunset {
-  background: var(--gradient-sunset);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
+/* Highlight block replaces gradient text */
+.highlight-block,
+.gradient-text,
+.gradient-text-cyan,
+.gradient-text-sunset,
 .gradient-text-emerald {
-  background: var(--gradient-emerald);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: var(--yellow);
+  color: var(--ink) !important;
+  border: var(--border);
+  padding: 0 10px;
+  display: inline-block;
+  transform: rotate(-1.5deg);
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 var(--ink);
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: var(--ink) !important;
+  font-weight: 700;
 }
 
 /* ==========================================================================
-   Glassmorphism & Card Styles
+   Neo-Brutalist Surface & Card Styles
    ========================================================================== */
 .glass-panel {
-  background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .glass-panel:hover {
-  border-color: rgba(0, 242, 254, 0.3);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  box-shadow: var(--shadow-lg);
 }
 
 /* Section Header Badge */
@@ -151,61 +132,63 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 1.1rem;
-  background: rgba(121, 40, 202, 0.18);
-  border: 1px solid rgba(121, 40, 202, 0.4);
+  background: var(--surface);
+  border: var(--border);
   border-radius: var(--radius-pill);
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--neon-cyan);
-  box-shadow: 0 0 15px rgba(121, 40, 202, 0.25);
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  box-shadow: var(--shadow);
   margin-bottom: 1rem;
 }
 
 .section-title {
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.15;
+  letter-spacing: -0.03em;
   margin-bottom: 1rem;
+  color: var(--ink);
 }
 
 .section-subtitle {
-  color: #cbd5e1;
+  color: var(--ink-soft);
   font-size: 1.1rem;
+  font-weight: 500;
   max-width: 650px;
   margin: 0 auto;
 }
 
-/* Ensure secondary text is high-contrast and crystal clear on dark background */
+/* Text helpers */
 .text-muted {
-  color: #cbd5e1 !important;
+  color: var(--ink-soft) !important;
 }
 
 .text-dim {
-  color: #a0aec0 !important;
+  color: var(--ink-soft) !important;
 }
 
 .text-light-silver {
-  color: #e2e8f0 !important;
+  color: var(--ink) !important;
 }
 
 /* ==========================================================================
-   Buttons with High-Impact Glows
+   Buttons with Neo-Brutalist Pop Style & Press States
    ========================================================================== */
 .btn-vibrant-primary {
-  background: var(--gradient-primary);
-  background-size: 200% 200%;
-  color: #ffffff !important;
+  background: var(--yellow);
+  color: var(--ink) !important;
   font-weight: 700;
-  border: none;
-  padding: 0.85rem 2rem;
-  border-radius: var(--radius-pill);
+  border: var(--border);
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius);
   position: relative;
   overflow: hidden;
   z-index: 1;
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-  box-shadow: 0 0 20px rgba(255, 0, 122, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: var(--shadow-lg);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -213,20 +196,22 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
 }
 
-.btn-vibrant-primary:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 35px rgba(255, 0, 122, 0.65), 0 0 15px rgba(0, 242, 254, 0.4);
-  color: #ffffff !important;
+.btn-vibrant-primary:hover,
+.btn-vibrant-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+  color: var(--ink) !important;
 }
 
 .btn-vibrant-outline {
-  background: transparent;
-  color: #ffffff !important;
-  font-weight: 600;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 0.85rem 2rem;
-  border-radius: var(--radius-pill);
-  transition: all 0.3s ease;
+  background: var(--surface);
+  color: var(--ink) !important;
+  font-weight: 700;
+  border: var(--border);
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -234,16 +219,22 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
 }
 
-.btn-vibrant-outline:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--neon-cyan);
-  box-shadow: 0 0 20px rgba(0, 242, 254, 0.35);
-  transform: translateY(-3px);
-  color: var(--neon-cyan) !important;
+.btn-vibrant-outline:hover,
+.btn-vibrant-outline:active {
+  background: var(--surface);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+  color: var(--ink) !important;
+}
+
+/* Neo-Brutalist Hairlines */
+hr, .border-secondary, .border-opacity-25 {
+  border-color: var(--ink) !important;
+  opacity: 1 !important;
 }
 
 /* ==========================================================================
-   Keyframe Animations
+   Keyframe Animations (Preserved timings with Neo-Brutalist Palette)
    ========================================================================== */
 @keyframes gradientShift {
   0% {
@@ -259,16 +250,16 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-10px);
   }
 }
 
 @keyframes pulseNeon {
   0%, 100% {
-    box-shadow: 0 0 25px rgba(0, 242, 254, 0.3), 0 0 50px rgba(121, 40, 202, 0.2);
+    box-shadow: var(--shadow);
   }
   50% {
-    box-shadow: 0 0 45px rgba(0, 242, 254, 0.6), 0 0 80px rgba(255, 0, 122, 0.4);
+    box-shadow: var(--shadow-lg);
   }
 }
 
