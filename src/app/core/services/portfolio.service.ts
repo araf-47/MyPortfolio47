@@ -15,7 +15,7 @@ export class PortfolioService {
     avatar: 'images/araf-profile.jpg',
     location: 'Available Globally / Remote & On-Site',
     experienceYears: 'Fresher',
-    completedProjects: '4+',
+    completedProjects: '3+',
     satisfactionRate: '100%',
   };
 
@@ -29,9 +29,9 @@ export class PortfolioService {
   readonly socialLinks: SocialLink[] = [
     {
       platform: 'GitHub',
-      url: 'https://github.com',
+      url: 'https://github.com/araf-47',
       icon: 'bi-github',
-      label: 'github.com/araf',
+      label: 'github.com/araf-47',
     },
     {
       platform: 'LinkedIn',
@@ -47,9 +47,9 @@ export class PortfolioService {
     },
     {
       platform: 'Email',
-      url: 'mailto:araf.developer@example.com',
+      url: 'mailto:araf47.edu@gmail.com',
       icon: 'bi-envelope-at-fill',
-      label: 'araf.developer@example.com',
+      label: 'araf47.edu@gmail.com',
     },
   ];
 
@@ -117,50 +117,50 @@ export class PortfolioService {
       githubUrl: '#',
     },
     {
-      id: 'fintech-analytics-engine',
-      title: 'Fintech Analytics Engine',
+      id: 'landlord-android-app',
+      title: 'Landlord Android Application',
       subtitle: 'Real-Time Financial Intelligence',
       description:
-        'Scalable transaction aggregator processing analytical metrics with Oracle and PostgreSQL databases, presented through interactive charts.',
+        'A modernized and feature-rich Android application designed for landlords and property managers to effortlessly track tenants, manage lease agreements, monitor rent payments, and oversee maintenance requests.',
       fullDescription:
-        'Designed high-volume transaction processing pipelines backed by Oracle relational engines and PostgreSQL reporting replicas. Features interactive charts, audit logs, and automated compliance reporting.',
-      image: 'https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=900&q=80',
-      tags: ['Java', 'Spring Boot', 'Oracle', 'Bootstrap', 'Angular'],
+        'A modernized and feature-rich Android application designed for landlords and property managers to effortlessly track tenants, manage lease agreements, monitor rent payments, and oversee maintenance requests.',
+      image: 'https://images.unsplash.com/photo-1710492341412-8b3aee7e70a6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
+      tags: ['Java', 'Android', 'Room DB', 'Material UI'],
       gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
       featured: true,
       demoUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/araf-47/landlord-android-remastered',
     },
-    {
-      id: 'flutter-cross-platform-hub',
-      title: 'OmniPay Mobile Hub',
-      subtitle: 'Cross-Platform Mobile Ecosystem',
-      description:
-        'Sleek mobile digital wallet and checkout experience engineered in Flutter & Android with offline-first SQLite synchronization.',
-      fullDescription:
-        'Crafted a cross-platform mobile commerce experience supporting contactless transactions, biometric authentication, and offline SQLite synchronization with cloud reconciliation.',
-      image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=80',
-      tags: ['Flutter', 'Android', 'SQLite', 'REST API'],
-      gradient: 'linear-gradient(135deg, #0ba360 0%, #3cba92 100%)',
-      featured: false,
-      demoUrl: '#',
-      githubUrl: '#',
-    },
-    {
-      id: 'reactive-commerce-suite',
-      title: 'Vivid Commerce Suite',
-      subtitle: 'Next-Gen E-Commerce Frontend',
-      description:
-        'Blazing-fast responsive e-commerce experience showcasing dynamic filtering, animated product reveals, and frictionless checkout flows.',
-      fullDescription:
-        'Built with standalone Angular architecture, SCSS keyframes, and Bootstrap grids. Delivers instant client-side transitions, state management, and accessibility standards.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80',
-      tags: ['Angular', 'Bootstrap', 'JavaScript', 'CSS/SCSS'],
-      gradient: 'linear-gradient(135deg, #F355DA 0%, #6E0DD0 100%)',
-      featured: false,
-      demoUrl: '#',
-      githubUrl: '#',
-    },
+    // {
+    //   id: 'flutter-cross-platform-hub',
+    //   title: 'OmniPay Mobile Hub',
+    //   subtitle: 'Cross-Platform Mobile Ecosystem',
+    //   description:
+    //     'Sleek mobile digital wallet and checkout experience engineered in Flutter & Android with offline-first SQLite synchronization.',
+    //   fullDescription:
+    //     'Crafted a cross-platform mobile commerce experience supporting contactless transactions, biometric authentication, and offline SQLite synchronization with cloud reconciliation.',
+    //   image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=80',
+    //   tags: ['Flutter', 'Android', 'SQLite', 'REST API'],
+    //   gradient: 'linear-gradient(135deg, #0ba360 0%, #3cba92 100%)',
+    //   featured: false,
+    //   demoUrl: '#',
+    //   githubUrl: '#',
+    // },
+    // {
+    //   id: 'reactive-commerce-suite',
+    //   title: 'Vivid Commerce Suite',
+    //   subtitle: 'Next-Gen E-Commerce Frontend',
+    //   description:
+    //     'Blazing-fast responsive e-commerce experience showcasing dynamic filtering, animated product reveals, and frictionless checkout flows.',
+    //   fullDescription:
+    //     'Built with standalone Angular architecture, SCSS keyframes, and Bootstrap grids. Delivers instant client-side transitions, state management, and accessibility standards.',
+    //   image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80',
+    //   tags: ['Angular', 'Bootstrap', 'JavaScript', 'CSS/SCSS'],
+    //   gradient: 'linear-gradient(135deg, #F355DA 0%, #6E0DD0 100%)',
+    //   featured: false,
+    //   demoUrl: '#',
+    //   githubUrl: '#',
+    // },
   ];
 
   getProfile() {

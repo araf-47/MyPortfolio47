@@ -14,9 +14,12 @@ export class About {
 
   stats = [
     { label: 'Experience', value: 'Fresher', icon: 'bi-briefcase-fill', color: 'var(--neon-magenta)' },
-    { label: 'Projects Shipped', value: '4+', icon: 'bi-rocket-takeoff-fill', color: 'var(--neon-cyan)' },
-    { label: 'Architecture & Scalability', value: '100%', icon: 'bi-cpu-fill', color: 'var(--neon-emerald)' },
-    { label: 'Client Satisfaction', value: '5.0★', icon: 'bi-star-fill', color: 'var(--neon-amber)' },
+    { label: 'Projects', value: '3+', icon: 'bi-rocket-takeoff-fill', color: 'var(--neon-cyan)' },
+    { label: 'Clean Architecture', value: '100%', icon: 'bi-cpu-fill', color: 'var(--neon-emerald)' },
+    // { label: 'Client Satisfaction', value: '5.0★', icon: 'bi-star-fill', color: 'var(--neon-amber)' },
+    // { label: 'Core Technologies', value: '8+', icon: 'bi-stack', color: 'var(--neon-amber)' },
+    // { label: 'Commitment', value: '100%', icon: 'bi-fire', color: 'var(--neon-amber)' },
+    { label: 'Learning Mindset', value: '24/7', icon: 'bi-infinity', color: 'var(--neon-amber)' },
   ];
 
   strengths = [
