@@ -1,4 +1,57 @@
 .portfolio-main {
   position: relative;
+  z-index: 1;
   overflow: hidden;
+}
+
+/* ==========================================================================
+   Subtle animated paper texture (film grain) background layer
+   ========================================================================== */
+.paper-texture-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  // Keep the layer itself transparent so the page background shows through.
+  background: transparent;
+}
+
+.paper-texture-layer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='paperNoise'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23paperNoise)' opacity='0.55'/></svg>");
+  background-size: 240px 240px;
+  background-repeat: repeat;
+  will-change: transform;
+  animation: paperGrain 7s steps(6) infinite;
+}
+
+@keyframes paperGrain {
+  0%   { transform: translate(0, 0); }
+  16%  { transform: translate(-6%, -4%); }
+  33%  { transform: translate(4%, -7%); }
+  50%  { transform: translate(-3%, 5%); }
+  66%  { transform: translate(7%, 1%); }
+  83%  { transform: translate(1%, 6%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Dark theme: lighter specks over the dark background */
+html[data-theme='dark'] .paper-texture-layer {
+  opacity: 0.09;
+  mix-blend-mode: screen;
+}
+
+/* Respect reduced motion: keep a single static grain frame */
+@media (prefers-reduced-motion: reduce) {
+  .paper-texture-layer::before {
+    animation: none;
+  }
 }

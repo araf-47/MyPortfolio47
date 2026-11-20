@@ -1,8 +1,11 @@
 .hero-section {
+  position: relative;
+  z-index: 1;
   min-height: 100vh;
   padding-top: calc(var(--navbar-height-mobile, 72px) + 2rem);
   padding-bottom: 3.5rem;
-  background-color: var(--bg);
+  // Transparent so the animated paper-texture layer shows through.
+  background-color: transparent;
 
   @media (min-width: 992px) {
     /* 84px navbar + 56px gap = 140px from top of viewport (~56px gap under navbar) */
