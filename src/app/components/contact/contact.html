@@ -60,7 +60,7 @@
       <!-- Static Contact Form Column -->
       <div class="col-lg-7">
         <div class="glass-panel p-4 p-md-5 h-100 form-card position-relative">
-          @if (isSubmitted) {
+          @if (isSubmitted()) {
             <div class="success-feedback text-center py-5">
               <div class="success-icon mb-4">
                 <i class="bi bi-check2-circle"></i>
@@ -78,17 +78,17 @@
               </button>
             </div>
           } @else {
-            @if (hasError) {
+            @if (hasError()) {
               <div class="alert alert-danger d-flex align-items-start gap-2 mb-4" role="alert">
                 <i class="bi bi-exclamation-triangle-fill mt-1"></i>
                 <div class="flex-grow-1">
-                  <strong>Couldn't send.</strong> {{ errorMessage }}
+                  <strong>Couldn't send.</strong> {{ errorMessage() }}
                 </div>
                 <button
                   type="button"
                   class="btn-close"
                   aria-label="Dismiss error"
-                  (click)="hasError = false"
+                  (click)="hasError.set(false)"
                 ></button>
               </div>
             }
@@ -155,12 +155,12 @@
               <button
                 type="submit"
                 class="btn btn-vibrant-primary w-100 py-3"
-                [disabled]="isSubmitting || sentTick || !contactForm.form.valid"
+                [disabled]="isSubmitting() || sentTick() || !contactForm.form.valid"
               >
-                @if (isSubmitting) {
+                @if (isSubmitting()) {
                   <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                   <span>Transmitting Message...</span>
-                } @else if (sentTick) {
+                } @else if (sentTick()) {
                   <i class="bi bi-check-lg me-2"></i>
                   <span>Sent ✓</span>
                 } @else {

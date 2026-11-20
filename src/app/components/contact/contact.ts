@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy } from '@angular/core';
+import { Component, inject, signal, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PortfolioService } from '../../core/services/portfolio.service';
@@ -25,12 +25,12 @@ export class Contact implements OnDestroy {
   // Same Web3Forms account as CV requests; submissions are routed to Araf's inbox.
   private readonly accessKey = '042619d8-230a-404a-9eb8-5eff6dcb369c';
 
-  isSubmitting = false;
-  isSubmitted = false;
-  hasError = false;
-  errorMessage = '';
+  readonly isSubmitting = signal(false);
+  readonly isSubmitted = signal(false);
+  readonly hasError = signal(false);
+  readonly errorMessage = signal('');
   // Brief "Sent ✓" micro-interaction before swapping to the success panel.
-  sentTick = false;
+  readonly sentTick = signal(false);
   private sentTickTimer: ReturnType<typeof setTimeout> | null = null;
 
   async onSubmit(): Promise<void> {
@@ -38,9 +38,9 @@ export class Contact implements OnDestroy {
       return;
     }
 
-    this.isSubmitting = true;
-    this.hasError = false;
-    this.errorMessage = '';
+    this.isSubmitting.set(true);
+    this.hasError.set(false);
+    this.errorMessage.set('');
 
     const subject =
       this.formData.subject && this.formData.subject.trim().length > 0
@@ -74,18 +74,19 @@ export class Contact implements OnDestroy {
       }
 
       if (!response.ok || data.success === false) {
-        this.hasError = true;
-        this.errorMessage =
-          data.message || 'Could not send your message. Please try again.';
+        this.hasError.set(true);
+        this.errorMessage.set(
+          data.message || 'Could not send your message. Please try again.',
+        );
         return;
       }
 
       // Brief inline "Sent ✓" feedback before swapping to the success panel.
-      this.sentTick = true;
+      this.sentTick.set(true);
       if (this.sentTickTimer) clearTimeout(this.sentTickTimer);
       this.sentTickTimer = setTimeout(() => {
-        this.sentTick = false;
-        this.isSubmitted = true;
+        this.sentTick.set(false);
+        this.isSubmitted.set(true);
         this.formData = {
           name: '',
           email: '',
@@ -94,10 +95,10 @@ export class Contact implements OnDestroy {
         };
       }, 1000);
     } catch {
-      this.hasError = true;
-      this.errorMessage = 'Network error while sending your message. Please try again.';
+      this.hasError.set(true);
+      this.errorMessage.set('Network error while sending your message. Please try again.');
     } finally {
-      this.isSubmitting = false;
+      this.isSubmitting.set(false);
     }
   }
 
@@ -106,9 +107,9 @@ export class Contact implements OnDestroy {
   }
 
   resetForm(): void {
-    this.isSubmitted = false;
-    this.hasError = false;
-    this.errorMessage = '';
-    this.sentTick = false;
+    this.isSubmitted.set(false);
+    this.hasError.set(false);
+    this.errorMessage.set('');
+    this.sentTick.set(false);
   }
 }
