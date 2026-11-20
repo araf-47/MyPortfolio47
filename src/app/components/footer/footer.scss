@@ -57,4 +57,24 @@
       box-shadow: 2px 2px 0 var(--ink);
     }
   }
+
+  .btn-theme-toggle {
+    background: var(--surface);
+    border: var(--border);
+    color: var(--ink);
+    font-weight: 700;
+    padding: 0.45rem 1.1rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+
+    &:hover, &:active {
+      background: var(--yellow);
+      color: var(--ink);
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+  }
 }

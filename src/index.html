@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-bs-theme="light">
+<html lang="en" data-bs-theme="light" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <title>Araf | Full-Stack Software Developer</title>
@@ -10,6 +10,18 @@
       content="Personal Portfolio of Araf - Full-Stack Software Developer specializing in Java, Spring Boot, Angular, and Modern Cloud Architectures."
     />
     <meta name="theme-color" content="#F5F0E6" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme = stored === 'dark' || stored === 'light' ? stored : 'light';
+          document.documentElement.setAttribute('data-theme', theme);
+          document.documentElement.setAttribute('data-bs-theme', theme);
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', theme === 'dark' ? '#0E0E10' : '#F5F0E6');
+        } catch (e) {}
+      })();
+    </script>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
     <!-- Google Fonts: Space Grotesk & Fira Code -->

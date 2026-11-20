@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export class Footer {
   currentYear = new Date().getFullYear();
+  readonly themeService = inject(ThemeService);
 
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });

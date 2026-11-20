@@ -301,3 +301,35 @@ hr, .border-secondary, .border-opacity-25 {
     scroll-behavior: auto !important;
   }
 }
+
+/* ==========================================================================
+   Dark Theme Palette (toggled via data-theme on <html>)
+   ========================================================================== */
+html[data-theme='dark'] {
+  --bg: #0E0E10;
+  --surface: #1C1C20;
+  --ink: #F5F0E6;
+  --ink-soft: #B8B3A8;
+  --yellow: #FFD93D;
+  --blue: #5B7CFF;
+  --green: #34D399;
+  --placeholder: #2A2A2E;
+
+  --border: 2px solid #F5F0E6;
+  --shadow: 4px 4px 0 var(--ink);
+  --shadow-lg: 6px 6px 0 var(--ink);
+  --shadow-xl: 10px 10px 0 var(--ink);
+
+  /* Legacy variable fallbacks */
+  --neon-cyan: var(--blue);
+  --neon-magenta: var(--yellow);
+  --neon-purple: var(--blue);
+  --neon-emerald: var(--green);
+  --neon-amber: var(--yellow);
+  --neon-blue: var(--blue);
+}
+
+html[data-theme='dark'] body {
+  background-color: var(--bg);
+  color: var(--ink);
+}

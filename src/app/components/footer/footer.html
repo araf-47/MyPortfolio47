@@ -12,15 +12,26 @@
       </div>
 
       <div class="col-md-6 text-center text-md-end">
-        <button
-          type="button"
-          class="btn btn-sm btn-back-to-top"
-          (click)="scrollToTop()"
-          aria-label="Back to top"
-        >
-          <span>Back to Top</span>
-          <i class="bi bi-arrow-up ms-1"></i>
-        </button>
+        <div class="d-flex align-items-center justify-content-center justify-content-md-end gap-2 mb-2">
+          <button
+            type="button"
+            class="btn btn-sm btn-theme-toggle"
+            (click)="themeService.toggle()"
+            [attr.aria-label]="themeService.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+            [attr.aria-pressed]="themeService.isDark()"
+          >
+            <i class="bi" [class.bi-sun-fill]="themeService.isDark()" [class.bi-moon-stars-fill]="!themeService.isDark()"></i>
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm btn-back-to-top"
+            (click)="scrollToTop()"
+            aria-label="Back to top"
+          >
+            <span>Back to Top</span>
+            <i class="bi bi-arrow-up ms-1"></i>
+          </button>
+        </div>
         <div class="footer-copyright small mt-2">
           &copy; {{ currentYear }} Araf. All rights reserved.
         </div>
