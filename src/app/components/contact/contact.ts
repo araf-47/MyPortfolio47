@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PortfolioService } from '../../core/services/portfolio.service';
@@ -10,7 +10,7 @@ import { ContactFormData } from '../../core/models/portfolio.model';
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
 })
-export class Contact {
+export class Contact implements OnDestroy {
   private portfolioService = inject(PortfolioService);
   socialLinks = this.portfolioService.getSocialLinks();
 
@@ -29,6 +29,9 @@ export class Contact {
   isSubmitted = false;
   hasError = false;
   errorMessage = '';
+  // Brief "Sent ✓" micro-interaction before swapping to the success panel.
+  sentTick = false;
+  private sentTickTimer: ReturnType<typeof setTimeout> | null = null;
 
   async onSubmit(): Promise<void> {
     if (!this.formData.name || !this.formData.email || !this.formData.message) {
@@ -77,13 +80,19 @@ export class Contact {
         return;
       }
 
-      this.isSubmitted = true;
-      this.formData = {
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      };
+      // Brief inline "Sent ✓" feedback before swapping to the success panel.
+      this.sentTick = true;
+      if (this.sentTickTimer) clearTimeout(this.sentTickTimer);
+      this.sentTickTimer = setTimeout(() => {
+        this.sentTick = false;
+        this.isSubmitted = true;
+        this.formData = {
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        };
+      }, 1000);
     } catch {
       this.hasError = true;
       this.errorMessage = 'Network error while sending your message. Please try again.';
@@ -92,9 +101,14 @@ export class Contact {
     }
   }
 
+  ngOnDestroy(): void {
+    if (this.sentTickTimer) clearTimeout(this.sentTickTimer);
+  }
+
   resetForm(): void {
     this.isSubmitted = false;
     this.hasError = false;
     this.errorMessage = '';
+    this.sentTick = false;
   }
 }

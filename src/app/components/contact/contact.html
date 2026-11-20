@@ -155,11 +155,14 @@
               <button
                 type="submit"
                 class="btn btn-vibrant-primary w-100 py-3"
-                [disabled]="isSubmitting || !contactForm.form.valid"
+                [disabled]="isSubmitting || sentTick || !contactForm.form.valid"
               >
                 @if (isSubmitting) {
                   <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                   <span>Transmitting Message...</span>
+                } @else if (sentTick) {
+                  <i class="bi bi-check-lg me-2"></i>
+                  <span>Sent ✓</span>
                 } @else {
                   <span>Send Message</span>
                   <i class="bi bi-send-fill ms-2"></i>
