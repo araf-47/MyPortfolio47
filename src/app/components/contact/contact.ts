@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PortfolioService } from '../../core/services/portfolio.service';
@@ -21,19 +21,62 @@ export class Contact {
     message: '',
   };
 
+  private readonly endpoint = 'https://api.web3forms.com/submit';
+  // Same Web3Forms account as CV requests; submissions are routed to Araf's inbox.
+  private readonly accessKey = '042619d8-230a-404a-9eb8-5eff6dcb369c';
+
   isSubmitting = false;
   isSubmitted = false;
+  hasError = false;
+  errorMessage = '';
 
-  onSubmit() {
+  async onSubmit(): Promise<void> {
     if (!this.formData.name || !this.formData.email || !this.formData.message) {
       return;
     }
 
     this.isSubmitting = true;
+    this.hasError = false;
+    this.errorMessage = '';
 
-    // Simulate front-end instant feedback
-    setTimeout(() => {
-      this.isSubmitting = false;
+    const subject =
+      this.formData.subject && this.formData.subject.trim().length > 0
+        ? `Portfolio Contact: ${this.formData.subject.trim()}`
+        : `Portfolio Contact from ${this.formData.name.trim()}`;
+
+    try {
+      const response = await fetch(this.endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: this.accessKey,
+          subject,
+          from_name: this.formData.name.trim(),
+          name: this.formData.name.trim(),
+          email: this.formData.email.trim(),
+          replyto: this.formData.email.trim(),
+          message: this.formData.message.trim(),
+          botcheck: false,
+        }),
+      });
+
+      let data: { success?: boolean; message?: string } = {};
+      try {
+        data = await response.json();
+      } catch {
+        data = {};
+      }
+
+      if (!response.ok || data.success === false) {
+        this.hasError = true;
+        this.errorMessage =
+          data.message || 'Could not send your message. Please try again.';
+        return;
+      }
+
       this.isSubmitted = true;
       this.formData = {
         name: '',
@@ -41,10 +84,17 @@ export class Contact {
         subject: '',
         message: '',
       };
-    }, 900);
+    } catch {
+      this.hasError = true;
+      this.errorMessage = 'Network error while sending your message. Please try again.';
+    } finally {
+      this.isSubmitting = false;
+    }
   }
 
-  resetForm() {
+  resetForm(): void {
     this.isSubmitted = false;
+    this.hasError = false;
+    this.errorMessage = '';
   }
 }
