@@ -1,6 +1,7 @@
 import { Component, inject, signal, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PortfolioService } from '../../core/services/portfolio.service';
+import { CvRequestService } from '../../core/services/cv-request.service';
 
 @Component({
   selector: 'app-hero',
@@ -10,7 +11,12 @@ import { PortfolioService } from '../../core/services/portfolio.service';
 })
 export class Hero implements OnInit, OnDestroy {
   private portfolioService = inject(PortfolioService);
+  private readonly cvRequestService = inject(CvRequestService);
   profile = this.portfolioService.getProfile();
+
+  openCvRequest(): void {
+    this.cvRequestService.open();
+  }
 
   typedName = signal('');
   private fullText = this.profile.name;

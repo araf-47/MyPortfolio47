@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ThemeService } from './core/services/theme.service';
 import { Navbar } from './components/navbar/navbar';
 import { Hero } from './components/hero/hero';
+import { CvRequestModal } from './components/cv-request-modal/cv-request-modal';
 import { About } from './components/about/about';
 import { Skills } from './components/skills/skills';
 import { Learning } from './components/learning/learning';
@@ -14,6 +15,7 @@ import { Footer } from './components/footer/footer';
   imports: [
     Navbar,
     Hero,
+    CvRequestModal,
     About,
     Skills,
     Learning,

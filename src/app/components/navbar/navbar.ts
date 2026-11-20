@@ -1,5 +1,6 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CvRequestService } from '../../core/services/cv-request.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,8 +9,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
+  private readonly cvRequestService = inject(CvRequestService);
+
   isScrolled = false;
   isMobileMenuOpen = false;
+
+  openCvRequest(): void {
+    this.cvRequestService.open();
+  }
 
   navItems = [
     { label: 'About', href: '#about' },

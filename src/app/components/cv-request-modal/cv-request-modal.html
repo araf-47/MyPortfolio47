@@ -1,0 +1,83 @@
+@if (isOpen()) {
+  <div class="cv-modal-backdrop" (click)="onBackdropClick($event)">
+    <div
+      class="cv-modal-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cv-modal-title"
+      (click)="$event.stopPropagation()"
+    >
+      @if (!success()) {
+        <h2 id="cv-modal-title" class="cv-modal-title">Request CV</h2>
+        <p class="cv-modal-subtitle">
+          Share your email and I'll send my CV directly to you.
+        </p>
+
+        <form (ngSubmit)="submit()" novalidate>
+          <div class="cv-field">
+            <label for="cv-email" class="cv-label">Email <span aria-hidden="true">*</span></label>
+            <input
+              #emailInput
+              id="cv-email"
+              type="email"
+              class="cv-input"
+              name="email"
+              [(ngModel)]="email"
+              (blur)="touched.set(true)"
+              required
+              autocomplete="email"
+              [attr.aria-invalid]="touched() && !emailValid"
+            />
+            @if (touched() && !emailValid) {
+              <p class="cv-error-text">Please enter a valid email address.</p>
+            }
+          </div>
+
+          <div class="cv-field">
+            <label for="cv-note" class="cv-label">Note (optional)</label>
+            <textarea
+              id="cv-note"
+              class="cv-textarea"
+              name="note"
+              rows="3"
+              [(ngModel)]="note"
+              placeholder="Company / role / short note"
+            ></textarea>
+          </div>
+
+          @if (error()) {
+            <div class="cv-alert" role="alert">{{ error() }}</div>
+          }
+
+          <div class="cv-actions">
+            <button
+              type="button"
+              class="btn btn-vibrant-outline"
+              (click)="close()"
+              [disabled]="submitting()"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="btn btn-vibrant-primary"
+              [disabled]="submitting() || !emailValid"
+            >
+              {{ submitting() ? 'Sending...' : 'Send Request' }}
+            </button>
+          </div>
+        </form>
+      } @else {
+        <h2 id="cv-modal-title" class="cv-modal-title">Request received!</h2>
+        <p class="cv-modal-subtitle">
+          Request received! I'll review it and send my CV to your email within an hour. Thanks for your patience.
+        </p>
+        <div class="cv-actions cv-actions-end">
+          <button type="button" class="btn btn-vibrant-primary" (click)="close()">
+            Close
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+}

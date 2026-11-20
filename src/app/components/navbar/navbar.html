@@ -21,16 +21,14 @@
         }
       </ul>
 
-      <a
-        href="/documents/Araf-Resume.pdf"
+      <button
+        type="button"
         class="btn btn-sm btn-vibrant-outline ms-2"
-        target="_blank"
-        rel="noopener"
-        download
+        (click)="openCvRequest()"
       >
         <i class="bi bi-download me-1"></i>
         <span>Resume</span>
-      </a>
+      </button>
       <a href="#contact" class="btn btn-sm btn-vibrant-primary ms-2">
         <span>Let's Talk</span>
         <i class="bi bi-send-fill ms-1"></i>
@@ -65,17 +63,14 @@
             </li>
           }
           <li class="pt-2">
-            <a
-              href="/documents/Araf-Resume.pdf"
+            <button
+              type="button"
               class="btn btn-vibrant-outline w-100"
-              target="_blank"
-              rel="noopener"
-              download
-              (click)="closeMobileMenu()"
+              (click)="openCvRequest(); closeMobileMenu()"
             >
               <i class="bi bi-download me-1"></i>
               <span>Download Resume</span>
-            </a>
+            </button>
           </li>
           <li class="pt-2">
             <a
